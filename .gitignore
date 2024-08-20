@@ -3,4 +3,4 @@ gallery.db
 chat.db
 *.pyc
 __pycache__
-
+migrations
