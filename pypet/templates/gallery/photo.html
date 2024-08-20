@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+Photo Page
+{% endblock %}
+{% block content %}
+
+
+<div class="bg-photo">
+    <div>
+        <img src="{{ url_for('static', filename='images/bg-photo.png') }}">
+        <p id='photoid'> PHOTO GALLERY </p>
+    </div>
+
+    <div id="page1">
+        <button class="custom-btn" onclick="document.getElementById('page2').scrollIntoView({behavior: 'smooth'})">DOWN</button>
+    </div>
+</div>
+
+
+<!--앨범저장소 -->
+<div class="container my-4">
+    {% if g.user %}
+    <div class="mb-4">
+        <a class ="album-id">Login ID:{{ g.user.username }}</a>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-out">Logout</a>
+    </div>
+
+
+    <!-- 카드 갤러리 -->
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="cardContainer"data-user-id="{{ g.user.id }}" data-username="{{ g.user.username }}">
+        <!-- 카드 요소들 -->
+    </div>
+    <button class="btn btn-success my-3" onclick="showAddCardModal()">Add</button>
+    {% else %}
+    <!-- 로그인 유도 메시지 -->
+    <p>Signin: <a href="{{ url_for('auth.login') }}">Login in</a></p>
+    {% endif %}
+</div>
+
+<!-- 카드 추가 모달 -->
+<div class="modal fade" id="addCardModal" tabindex="-1" aria-labelledby="addCardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCardModalLabel">Add Card</h5>
+            
+            </div>
+            <div class="modal-body">
+                <form id="addCardForm">
+                    <div class="form-group">
+                        <label for="cardTitle">Title</label>
+                        <input type="text" class="form-control" id="cardTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardText">Content</label>
+                        <textarea class="form-control" id="cardText" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardImage">Image</label>
+                        <input type="file" class="form-control-file" id="cardImage" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelAddCard()">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 카드 수정 모달 -->
+<div class="modal fade" id="editCardModal" tabindex="-1" aria-labelledby="editCardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCardModalLabel">Modifying the album</h5>
+
+            </div>
+            <div class="modal-body">
+                <form id="editCardForm">
+                    <div class="form-group">
+                        <label for="editCardTitle">Title</label>
+                        <input type="text" class="form-control" id="editCardTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCardText">Content</label>
+                        <textarea class="form-control" id="editCardText" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCardImage">Image</label>
+                        <input type="file" class="form-control-file" id="editCardImage">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Modifying</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelEditCard()">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="page2">
+    <button class = "custom-btn2" onclick="document.getElementById('page1').scrollIntoView({behavior: 'smooth'})">UP</button>
+</div>
+{% endblock %}

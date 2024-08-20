@@ -1,0 +1,6 @@
+.idea
+gallery.db
+chat.db
+*.pyc
+__pycache__
+

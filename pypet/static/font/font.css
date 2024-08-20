@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'RixInooAriDuriR';
+    src: url('RixInooAriDuri\ Regular.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Dongle";
+    src: url('Dongle-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "RobotoCondensed-Medium";
+    src: url('RobotoCondensed-Medium.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Comfortaa-Bold" ;
+    src: url('Comfortaa-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 시계 */
+#main-time {
+    font-family: 'Dongle', sans-serif;
+    font-size: 100px;
+    color: #fff;
+}
+
+/* 홈화면 petGallery문구 */
+#text-content{
+    font-family: 'RixInooAriDuriR', sans-serif;
+    font-size: 75px;
+}
+/* home화면 메인 */
+#sub-text{
+    font-family: 'RobotoCondensed-Medium', sans-serif;
+    font-size: 20px;
+
+}
+
+
+/* 메인바 */
+.navbar,
+.navbar-nav{
+    font-family: 'RobotoCondensed-Medium', sans-serif;
+    font-size: 15px;
+}
+
+/* photo, video 글씨체 */
+#photoid,
+#videoid{
+    font-family: 'Comfortaa-Bold', sans-serif;
+    font-size: 70px;
+    color: rgb(255, 255, 255);
+}
+/* photo 스크롤  */
+.custom-btn{
+    font-family: 'Dongle', sans-serif;
+    font-size: 20px;
+    color: #fff;
+}
+
+/* 게시판 , 회원탈퇴*/
+.question{
+    font-family: 'RobotoCondensed-Medium', sans-serif;
+    font-size: 20px;
+}
+
+/* 지도 */
+
+.bg-location {
+    font-family: 'RobotoCondensed-Medium', sans-serif;
+    font-size: 15px;
+}
+
+.container-auth .my-3{
+    font-family: 'RobotoCondensed-Medium', sans-serif;
+    font-size: 30px;
+}
+
+.container  .list{
+    font-family: 'RobotoCondensed-Medium', sans-serif;
+    font-size: 20px;
+} 

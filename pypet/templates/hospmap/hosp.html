@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Photo Page
+{% endblock %}
+
+{% block content %}
+<div class='bg-location'>
+    <form id="searchForm">
+        <label for="place">Search:</label>
+        <input type="text" id="place" name="place" required>
+        <br><br>
+        <input type="submit" class = "subimt" value="place Search">
+    </form>
+
+
+    <div id="map" ></div>
+
+    <div id="place-results">
+        <table id="results-table" border="1">
+            <tr>
+                <th>name</th>
+                <th>addredd</th>
+                <th>number</th>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock%}

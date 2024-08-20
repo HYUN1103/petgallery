@@ -1,0 +1,55 @@
+/* 지도와 결과를 감싸는 컨테이너 스타일 */
+.bg-location {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    background-color: rgb(255, 253, 247);
+}
+
+/* 검색 폼 스타일 */
+#searchForm {
+    margin-bottom: 20px;
+}
+.subimt{
+    border-radius: 10px;
+    border-style: none;
+    background-color: skyblue;
+    color: white;
+    text-align: center;
+}
+
+.subimt:hover{
+    background-color: rgb(9, 67, 105);
+}
+
+.subimt:active{
+    background-color: #a872ff;
+
+}
+
+/* 지도 스타일 */
+#map {
+    width: 60%;
+    height: 600px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+}
+
+/* 결과 테이블 컨테이너 스타일 */
+#place-results {
+    width: 35%;
+    margin-right: 20px;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table th {
+    background-color: rgb(0,0,0,0.5);
+    color: white;
+    padding: 8px;
+    text-align: center;
+}

@@ -1,0 +1,115 @@
+<!-- 게시물 상세페이지-->
+{% extends 'base.html' %}
+{% block content %}
+<div class = 'question'>
+    <img src="{{ url_for('static', filename='images/bg-board.png') }}">
+    <div class = "detail">
+    <div class="container my-3">
+        <!-- flash 오류 -->
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+            
+    <!-- 질문 -->
+    <h2 class="border-bottom py-2">{{ question.subject }}</h2>
+    <div class="card my-3">
+        <div class="card-body">
+        <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
+        
+        <div class="d-flex justify-content-end">
+            {% if question.modify_date %}
+            <div class="badge bg-light text-dark p-2 text-start mx-3">
+                <div class="mb-2">date</div>
+                <div>{{ question.modify_date }}</div>
+            </div>
+            {% endif %}
+
+            
+            <div class="badge bg-light text-dark p-2 text-start">
+                <div class="mb-2">{{ question.create_date.strftime('%Y/%m/%d')  }}</div>
+                <div>{{ question.create_date.strftime('%Y/%m/%d')  }}</div>
+            </div>
+            </div>
+            <div class="my-3">
+
+
+            <!-- 추천-->
+
+            {% if g.user == question.user %}
+            <a href="{{ url_for('question.modify', question_id=question.id) }}"
+                class="btn btn-sm btn-outline-secondary">Modify</a>
+            <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
+            data-uri="{{ url_for('question.delete', question_id=question.id) }}">Delete</a>  
+            {% endif %}
+        </div>
+    </div>
+    </div>
+    
+    <!-- 답변 목록 -->
+    <h5 class="border-bottom my-3 py-2">{{ question.answer_set|length }}answers here.</h5>
+    {% for answer in question.answer_set %}
+    <a id="answer_{{ answer.id }}"></a>
+    <div class="card my-3">
+        <div class="card-body">
+        <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
+        <div class="d-flex justify-content-end">
+            {% if answer.modify_date %}
+            <div class="badge bg-light text-dark p-2 text-start mx-3">
+                <div class="mb-2">modified at</div>
+                <div>{{ answer.modify_date }}</div>
+            </div>
+            {% endif %}
+
+
+
+
+            <div class="badge bg-light text-dark p-2 text-start mx-3">
+            <div class="mb-2">{{ answer.user.username }}</div>
+                <div>{{ answer.create_date }}</div>
+            </div>
+        </div>
+        <div class="my-3">
+
+
+
+            {% if g.user == answer.user %}
+            <a href="{{ url_for('answer.modify', answer_id=answer.id) }}"
+            class="btn btn-sm btn-outline-secondary">Modify</a>
+            <a href="#" class="delete btn btn-sm btn-outline-secondary "
+            data-uri="{{ url_for('answer.delete', answer_id=answer.id) }}">Delete</a>  
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+        <!--답변등록-->
+        <form action="{{ url_for('answer.create', question_id=question.id) }}" method="post" class="my-3">
+            {{ form.csrf_token }}
+            {% include "form_errors.html" %}
+            <div class="mb-3">
+                <label for="content">Contents of the answer</label>
+                <textarea {% if not g.user %}disabled{% endif %}
+                        name="content" id="content" class="form-control" rows="10"></textarea>
+            </div>
+            <input type="submit" value="Reply registration" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("Are you sure you want to delete it?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+
+  {% endblock %}

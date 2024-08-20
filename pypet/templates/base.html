@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='photo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='video.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='container-box.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chatform.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='font/font.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='location.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scroll.css')}}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <title>PetGallery</title>
+</head>
+<body class='bg'>
+    {% include 'navbar.html' %}
+    {% if g.user %}
+    {% endif %}
+   
+    <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+    {% block content %}
+    {% endblock %}
+    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+    <!--location-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXogd-c9vnx6zK26ZaGn5JCMv-yse98C4&callback=initMap" async defer></script>
+    <script src="{{ url_for('static', filename='location.js') }}" ></script>
+
+    <!-- 소켓-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='socket.js') }}"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    
+    {% block script %}
+    <!--JS -->
+    <script src="{{ url_for('static', filename='nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='time_script.js') }}"></script>
+    <script src="{{ url_for('static', filename='photo.js') }}"></script>
+    <script src="{{ url_for('static', filename='video.js') }}"></script>
+    <script src="{{ url_for('static', filename='chatform.js') }}"></script>
+
+
+
+    {% endblock %}
+    <!-- 자바스크립트 End -->
+</body>
+</html>
+

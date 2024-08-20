@@ -1,0 +1,30 @@
+/* custom.css */
+.container-auth {
+    max-width: 500px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+h5 {
+    color: #333;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+    border-color: #ced4da;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.mb-3 label {
+    font-weight: bold;
+}
+
+/*회원탈퇴 */
+.list{
+    list-style-type: none ;
+    margin-left: 16px;
+}

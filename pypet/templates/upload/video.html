@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}
+upload video  <!-- 페이지 타이틀 설정 -->
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-video">
+    <div>
+        <img src="{{ url_for('static', filename='images/bg-video.png') }}">  <!-- 배경 이미지 -->
+        <p id='videoid'>UPLOAD VIDEO GALLERY</p>  <!-- 갤러리 제목 -->
+    </div>
+
+    <div id="page1">
+        <button class="custom-btn" onclick="document.getElementById('page2').scrollIntoView({behavior: 'smooth'})">DOWN</button>
+    </div>
+</div>
+
+<!-- 로딩 스피너 추가 -->
+<div id="loadingSpinner" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+
+
+<!-- 영상저장소-->
+<div class="container my-4">
+    {% if g.user %}
+    <!-- 로그인된 사용자 정보 및 로그아웃 버튼 -->
+    <div class="mb-4">
+        <a class="login-id">Login ID: {{ g.user.username }}</a>  <!-- 로그인된 사용자 이름 -->
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-out">Logout</a>  <!-- 로그아웃 버튼 -->
+    </div>
+
+
+    <!-- 동영상 갤러리 -->
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="videoCardContainer" data-user-id="{{ g.user.id }}" data-username="{{ g.user.username }}">
+        <!-- 동영상 카드들이 여기에 추가됨 -->
+    </div>
+    <!-- 동영상 추가 모달을 여는 버튼 -->
+    <!-- submit-> add로 수정동영상 추가 버튼 -->
+    <button class="btn btn-success my-3" onclick="showAddVideoModal()">Add</button>  
+    {% else %}
+    <!-- 로그인 유도 메시지 -->
+    <p>Signin: <a href="{{ url_for('auth.login') }}">Login in</a></p> <!-- 로그인 링크 -->
+    {% endif %}
+</div>
+
+
+
+<!-- 비디오 추가 모달 -->
+<div class="modal" id="addVideoModal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form id="addVideoForm">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Video</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="videoTitle">Title:</label>
+                        <input type="text" class="form-control" id="videoTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="videocontent">content:</label>
+                        <input type="text" class="form-control" id="videocontent" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="videoFile">File:</label>
+                        <input type="file" class="form-control-file" id="videoFile" accept="video/mp4" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelAddVideo()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 카드 수정모달 -->
+<div class="modal fade" id="editVideoModal" tabindex="-1" role="dialog" aria-labelledby="editVideoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="editVideoForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editVideoModalLabel">Modifying the Video</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editVideoId">
+
+
+                    <div class="form-group">
+                        <label for="editVideoTitle">Title</label>
+                        <input type="text" class="form-control" id="editVideoTitle" required>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="editVideocontent">content</label>
+                        <textarea class="form-control" id="editVideocontent" rows="3" required></textarea>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="editVideoFile">File:</label>
+                        <input type="file" class="form-control-file" id="editVideoFile" accept="video/mp4, video/webm, video/avi, video/mov" required>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="cancelEditVideo()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="page2">
+    <button class = "custom-btn2" onclick="document.getElementById('page1').scrollIntoView({behavior: 'smooth'})">UP</button>
+</div>
+{% endblock %}

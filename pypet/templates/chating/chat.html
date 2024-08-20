@@ -1,0 +1,35 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+
+{% extends 'base.html' %}
+
+{% block title %}
+chat
+{% endblock %}
+
+{% block content %}
+<!-- 이미지사이즈-->
+<div class ="chating">
+    <div class = "outside"> 
+        <img src="{{ url_for('static', filename='images/bg-chat.png') }}">
+    </div>
+
+    <form id="messageForm">
+        <input type="text" id="formUser" value="{{ g.user.username }}" placeholder="Please log in"
+        {% if not g.user %}disabled{% endif %} 
+        required>
+
+        <input type="text" id="formMessage" placeholder="Please enter a message" 
+        {% if not g.user %}disabled{% endif %} 
+        
+        required>
+        <button type="submit" value="전송">submit</button>
+    </form>
+
+
+    <div id = "messageBox">
+        <div id="messages"></div>
+    </div>
+</div>
+
+
+{% endblock %}

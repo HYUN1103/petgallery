@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-auth">
+    <h5 class="my-3 border-bottom pb-2">Delete account</h5>
+    <form method="post">
+        {{ form.csrf_token }}
+        <div class="alert alert-warning" role="alert">
+            Are you sure you want to delete the account? <br>This operation is irreversible
+        </div>
+        <div class="form-group">
+            {{ form.password.label }} <!-- 비밀번호 레이블 -->
+            {{ form.password(class="form-control") }}  <!-- 비밀번호 입력 필드 -->
+        </div>
+        <button type="submit" class="btn btn-danger">Delete Account</button>
+        <a href="{{ url_for('main.home') }}" class="btn btn-secondary">delete</a>
+    </form>
+</div>
+{% endblock %}
