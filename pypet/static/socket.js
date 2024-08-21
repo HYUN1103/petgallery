@@ -35,5 +35,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         var newMessage = document.createElement('p');
         newMessage.textContent = data.user + ": " + data.message;
         messageBox.appendChild(newMessage);
+        
+        // scrollTop을 계산하여 스크롤이 클라이언트 영역에 맞춰지도록 조정
+        messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
     });
 });

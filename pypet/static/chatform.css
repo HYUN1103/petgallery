@@ -60,6 +60,7 @@
     flex-direction: column; /* 최신 메시지가 아래에 위치하도록 설정 */
 }
 
+
 #messages {
     height: 300px; /* 메시지 박스의 고정된 높이 */
     overflow-y: auto; /* 세로 스크롤 활성화 */

@@ -7,6 +7,13 @@ question_voter = db.Table(
     db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
     db.Column('question_id', db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'), primary_key=True)
 )
+
+answer_voter = db.Table(
+    'answer_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('answer_id', db.Integer, db.ForeignKey('answer.id', ondelete='CASCADE'), primary_key=True)
+)    
+
 #Question :질문 모델
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,16 +27,13 @@ class Question(db.Model):
     view_count = db.Column(db.Integer, default=0)   # 조회수를 저장하는 필드
     
 
-answer_voter = db.Table(
-    'answer_voter',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
-    db.Column('answer_id', db.Integer, db.ForeignKey('answer.id', ondelete='CASCADE'), primary_key=True)
-)        
+    
     
 #답변모델
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    #답변을 질문과 연결하기 위해 추가 [question.id는 question테이블의 id를 의미한다.] , [ondelete: 삭제연동 = 질문을 삭제하면 질문에 달린 답글도 삭제]
+    #답변을 질문과 연결하기 위해 추가 [question.id는 question테이블의 id를 의미한다.] , 
+    # [ondelete: 삭제연동 = 질문을 삭제하면 질문에 달린 답글도 삭제]
     question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'))
     question = db.relationship('Question', backref=db.backref('answer_set'))
     content = db.Column(db.Text(), nullable=False)
@@ -75,6 +79,14 @@ class Video(db.Model):
     user = db.relationship('User', back_populates='videos')  # 사용자와의 관계 설정
 
 User.videos = db.relationship('Video', order_by=Video.create_date, back_populates='user')  # 사용자와 동영상의 관계 설정
+
+#채팅 정의
+class Chat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # 기본 키 추가
+    username = db.Column(db.String(150), nullable=False)  # unique=True 제거 (여러 메시지를 허용하기 위해)
+    message = db.Column(db.Text, nullable=False)  # 메시지 필드의 데이터 타입을 Text로 지정
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)  # 타임스탬프 필드 추가
+
 
 
 

@@ -57,27 +57,33 @@
 
 /* 게시판 제목 색깔 */
 .text-start a{
-    color:black;
+    color:rgb(255, 255, 255);
 }
 /* 번호색깔 */
 .page-link{
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     color: white;
 }
+/* 페이지 번호 */
 .active>.page-link, .page-link.active{
-    background-color: black;
+    background-color: rgb(117, 117, 117);
     border-color: white;
 }
 
+/* 페이지  before, next 색깔배경 */
 .disabled>.page-link, .page-link.disabled{
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
 }
+
+/* writer, date글 게시판 배경 */
 .table>:not(caption)>*>* {
     background-color: rgb(0, 0, 0, 0.1);
     color: white;
 }
+/* title */
 .text-start a {
-    text-align: center;
+    text-align: center !important;
     color: white;
 }
 
