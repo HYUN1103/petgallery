@@ -61,19 +61,12 @@
                 <div>{{ answer.modify_date }}</div>
             </div>
             {% endif %}
-
-
-
-
             <div class="badge bg-light text-dark p-2 text-start mx-3">
             <div class="mb-2">{{ answer.user.username }}</div>
                 <div>{{ answer.create_date }}</div>
             </div>
         </div>
         <div class="my-3">
-
-
-
             {% if g.user == answer.user %}
             <a href="{{ url_for('answer.modify', answer_id=answer.id) }}"
             class="btn btn-sm btn-outline-secondary">Modify</a>
@@ -83,7 +76,6 @@
         </div>
     </div>
 </div>
-
         {% endfor %}
         <!--답변등록-->
         <form action="{{ url_for('answer.create', question_id=question.id) }}" method="post" class="my-3">
