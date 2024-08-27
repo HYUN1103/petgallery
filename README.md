@@ -26,3 +26,16 @@
 * ##### video
 * ##### board
 * ##### chat window
+
+📌Language used
+---------------------------------------------------------------------------------------
+* ##### flask
+* ##### HTML
+* ##### CSS
+* ##### javascript
+* ##### Ajax
+* ##### jQuery
+* ##### Socket.IO
+* ##### AWS
+* ##### canba
+* ##### photoshop
