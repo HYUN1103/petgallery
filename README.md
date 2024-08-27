@@ -36,4 +36,6 @@
 * ##### video
 * ##### board
 * ##### chat window
+* ##### Membership Withdrawal
+* ##### Information
 
