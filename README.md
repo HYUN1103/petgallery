@@ -9,12 +9,22 @@
 * ##### 24.7.15 ~ 24. 8.9
 
 
-⚙️development environment
+📌Language used
 --------------------------------------------------------------------------------------
 * ##### Python
 * ##### IDE:3.10
 * ##### Framworkd:Flask
 * ##### Datebase:Sqlite
+* ##### flask
+* ##### HTML
+* ##### CSS
+* ##### javascript
+* ##### Ajax
+* ##### jQuery
+* ##### Socket.IO
+* ##### AWS
+* ##### canba
+* ##### photoshop
 
 
 🔍Key Features
@@ -27,15 +37,3 @@
 * ##### board
 * ##### chat window
 
-📌Language used
----------------------------------------------------------------------------------------
-* ##### flask
-* ##### HTML
-* ##### CSS
-* ##### javascript
-* ##### Ajax
-* ##### jQuery
-* ##### Socket.IO
-* ##### AWS
-* ##### canba
-* ##### photoshop
