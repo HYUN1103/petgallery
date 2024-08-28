@@ -11,7 +11,7 @@
 ⚙️environment
 --------------------------------------------------------------------------------------
 
-* Frontend
+** Frontend
 * #### HTML/CSS
 * #### Bootstrap
 * #### JavaScript
@@ -20,16 +20,16 @@
 * #### Ajax
 * #### socket.io
   
-* Backend
+** Backend
 * #### Python
 * #### flask
 
   
-* Database
+** Database
 * #### SQLite3
 
   
-* Library
+** Library
 * #### Git/GitHub
 * #### django-extensions
 
