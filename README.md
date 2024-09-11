@@ -10,9 +10,8 @@
 
 📌Language used
 --------------------------------------------------------------------------------------
-* ##### Python
-* ##### IDE:3.10
-* ##### Framworkd:Flask
+* ##### Python 3.10
+* ##### Freamwork:Flask
 * ##### Datebase:Sqlite
 * ##### flask
 * ##### HTML
@@ -22,7 +21,7 @@
 * ##### jQuery
 * ##### Socket.IO
 * ##### AWS
-* ##### canba
+* ##### canva
 * ##### photoshop
   
 Library
